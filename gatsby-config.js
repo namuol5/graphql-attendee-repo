@@ -1,23 +1,6 @@
 require("dotenv").config({
   path: `.env.production`,
 })
-const axios = require("axios")
-const getAuthorizationToken = () => {
-  return axios
-    .post(
-      "https://stitch.mongodb.com/api/client/v2.0/app/testapp-kcwun/auth/providers/local-userpass/login",
-      {
-        username: "notjeffchhen@gmail.com",
-        password: "blahblah",
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-    .then(res => `Bearer ${res.data.access_token}`)
-}
 
 const blogQuery = `{
   allMarkdownRemark{
