@@ -1,23 +1,23 @@
-require('dotenv').config({
+require("dotenv").config({
   path: `.env.production`,
-});
-const axios = require('axios');
+})
+const axios = require("axios")
 const getAuthorizationToken = () => {
   return axios
     .post(
       "https://stitch.mongodb.com/api/client/v2.0/app/testapp-kcwun/auth/providers/local-userpass/login",
       {
         username: "notjeffchhen@gmail.com",
-        password: "blahblah"
+        password: "blahblah",
       },
       {
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       }
     )
-    .then(res => `Bearer ${res.data.access_token}`);
-};
+    .then(res => `Bearer ${res.data.access_token}`)
+}
 
 const blogQuery = `{
   allMarkdownRemark{
@@ -34,22 +34,20 @@ const blogQuery = `{
       html
     }
   }
-}`;
+}`
 
 const queries = [
   {
     query: blogQuery,
-    transformer: ({ data }) => data.allMarkdownRemark.nodes // optional
-    
+    transformer: ({ data }) => data.allMarkdownRemark.nodes, // optional
   },
-];
+]
 module.exports = {
-
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `GraphQL Workshop`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Jeff and Louman`,
+      summary: `who love to code.`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
@@ -57,7 +55,59 @@ module.exports = {
       twitter: `kylemathews`,
     },
   },
-  
+
+  crossword: {
+    food: {
+      chinese: {
+        name: `chasiubao`,
+      },
+      taiwanese: {
+        drink: {
+          name: `boba`,
+        },
+      },
+      korean: {
+        name: `bulgogi`,
+      },
+      japanese: {
+        grill: {
+          name: `hibachi`,
+        },
+        seafood: {
+          name: `sushi`,
+        },
+        dessert: {
+          name: `mochi`,
+        },
+        noodles: {
+          thick: {
+            name: `udon`,
+          },
+          thin: {
+            name: `ramen`,
+          },
+        },
+      },
+      hawaiian: {
+        name: `poke`,
+      },
+      indian: {
+        name: `naan`,
+      },
+      mediterranean: {
+        name: `shawarma`,
+      },
+      french: {
+        dessert: {
+          name: `cremebrulee`,
+        },
+      },
+      miscdessert: {
+        name: `cake`,
+      },
+    },
+  },
+
   plugins: [
     {
       resolve: "gatsby-source-graphql",
@@ -67,7 +117,8 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "recipe",
         // Url to query from
-        url: "https://us-west-2.aws.stitch.mongodb.com/api/client/v2.0/app/testapp-kcwun/graphql",
+        url:
+          "https://us-west-2.aws.stitch.mongodb.com/api/client/v2.0/app/testapp-kcwun/graphql",
         headers: async () => {
           return {
             Authorization: await getAuthorizationToken(),
@@ -149,11 +200,9 @@ module.exports = {
         chunkSize: 10000, // default: 1000
       },
     },
-    
- 
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-
 }

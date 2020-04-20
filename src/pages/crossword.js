@@ -7,7 +7,7 @@ const clue = ""
 const data = {
   across: {
     1: { clue: "Dim Sum", answer: "CHASIUBAO", row: 0, col: 0 },
-    2: { clue: "Mandalorian", answer: "BOBA", row: 4, col: 5 },
+    2: { clue: "Mandalorian's favorite drink", answer: "BOBA", row: 4, col: 5 },
     3: {
       clue: "College students' best friend",
       answer: "RAMEN",
