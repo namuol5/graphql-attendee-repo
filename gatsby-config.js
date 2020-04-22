@@ -56,8 +56,55 @@ module.exports = {
     social: {
       twitter: `kylemathews`,
     },
+    crossword: {
+      food: {
+        chinese: {
+          name: `chasiubao`,
+        },
+        taiwanese: {
+          drink: {
+            name: `boba`,
+          },
+        },
+        korean: {
+          name: `bulgogi`,
+        },
+        hawaiian:{
+          name: `poke`,
+        },
+        indian: {
+          name: `naan`,
+        },
+        french: {
+          name: `cremebrulee`,
+        },
+        miscdessert: {
+          name: `cake`,
+        },
+        japanese: {
+          grill: {
+            name: `hibachi`,
+          },
+          seafood: {
+            name: `sushi`,
+          },
+          dessert: {
+            name: `mochi`,
+          },
+          noodles: {
+            thick: {
+              name: `udon`,
+            },
+            thin: {
+              name: `ramen`,
+            },
+          },
+        },
+      },
+    },
   },
-  
+
+
   plugins: [
     {
       resolve: "gatsby-source-graphql",
